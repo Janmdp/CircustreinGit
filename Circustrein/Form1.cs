@@ -1,18 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Circustrein
 {
     public partial class Form1 : Form
     {
-        Train train = new Train();
+        private Train train = new Train();
+        private Type.typeAnimal send = Type.typeAnimal.Herbivore;
+
         public Form1()
         {
             InitializeComponent();
@@ -22,18 +17,19 @@ namespace Circustrein
         {
             listBoxAnimals.Items.Clear();
             listBoxWagons.Items.Clear();
-            foreach(Animal animal in train.Animals)
+            foreach (Animal animal in train.Animals)
             {
                 listBoxAnimals.Items.Add(animal);
             }
-            foreach(Wagon wagon in train.Wagons)
+            foreach (Wagon wagon in train.Wagons)
             {
                 listBoxWagons.Items.Add(wagon);
             }
         }
+
         private void buttonAddAnimal_Click(object sender, EventArgs e)
         {
-            if (train.AddAnimal(textBoxName.Text, Convert.ToInt32(comboBoxSize.Text.Substring(0, 1)), checkBoxCarnivore.Checked))
+            if (train.AddAnimal(textBoxName.Text, Convert.ToInt32(comboBoxSize.Text.Substring(0, 1)), send))
             {
                 updateInterfaces();
             }
@@ -42,8 +38,11 @@ namespace Circustrein
                 MessageBox.Show("New wagon generated");
                 updateInterfaces();
             }
+        }
 
-            
+        private void CheckBoxCarnivore_CheckedChanged(object sender, EventArgs e)
+        {
+            send = Type.typeAnimal.Carnivore;
         }
     }
 }

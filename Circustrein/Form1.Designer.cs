@@ -103,6 +103,7 @@
             this.checkBoxCarnivore.TabIndex = 6;
             this.checkBoxCarnivore.Text = "Carnivore";
             this.checkBoxCarnivore.UseVisualStyleBackColor = true;
+            this.checkBoxCarnivore.CheckedChanged += new System.EventHandler(this.CheckBoxCarnivore_CheckedChanged);
             // 
             // buttonAddAnimal
             // 
