@@ -20,20 +20,23 @@ namespace Circustrein
         public List<Wagon> Wagons { get => wagons; set => wagons = value; }
 
         //methods
+        //Method for creating and adding a animal to a wagon
         public bool AddAnimal(string name, int weight, Type.typeAnimal typeAnimal)
         {
-            bool added = false;
+            //Create the animal
             Animal animal = new Animal(name, weight, typeAnimal);
+            //Add the animal to a list of animals
             animals.Add(animal);
+            //Loop through all the wagons and check if the animal can be added.
             foreach (Wagon wagon in Wagons)
             {
                 if (wagon.addToWagon(animal))
                 {
-                    added = true;
                     return true;
                 }
             }
-            if (!added)
+            //if the animal can't be added generate a new wagon
+            if (!animal.Added)
             {
                 noWagonFound(animal);
                 return false;
@@ -42,6 +45,7 @@ namespace Circustrein
             return false;
         }
 
+        //Generate a new wagon and add the animal to the wagon.
         public void noWagonFound(Animal animal)
         {
             Wagon wagon = new Wagon(10, false);
