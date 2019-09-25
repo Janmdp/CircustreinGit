@@ -29,7 +29,6 @@ namespace Circustrein
             {
                 if (wagon.addToWagon(animal))
                 {
-                    wagon.addToWagon(animal);
                     added = true;
                     return true;
                 }

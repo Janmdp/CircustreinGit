@@ -33,8 +33,10 @@ namespace Circustrein
                 Capacity = Capacity - animal.Weight;
                 return true;
             }
-
-            return false;
+            else
+            {
+                return false;
+            }
         }
 
         public bool checkWeight(Animal animal)

@@ -29,20 +29,34 @@ namespace Circustrein
 
         private void buttonAddAnimal_Click(object sender, EventArgs e)
         {
-            if (train.AddAnimal(textBoxName.Text, Convert.ToInt32(comboBoxSize.Text.Substring(0, 1)), send))
+            try
             {
-                updateInterfaces();
+                if (train.AddAnimal(textBoxName.Text, Convert.ToInt32(comboBoxSize.Text.Substring(0, 1)), send))
+                {
+                    updateInterfaces();
+                }
+                else
+                {
+                    MessageBox.Show("New wagon generated");
+                    updateInterfaces();
+                }
             }
-            else
+            catch
             {
-                MessageBox.Show("New wagon generated");
-                updateInterfaces();
+                MessageBox.Show("Something went wrong did you fill in al the fields?");
             }
         }
 
         private void CheckBoxCarnivore_CheckedChanged(object sender, EventArgs e)
         {
-            send = Type.typeAnimal.Carnivore;
+            if (checkBoxCarnivore.Checked)
+            {
+                send = Type.typeAnimal.Carnivore;
+            }
+            else
+            {
+                send = Type.typeAnimal.Herbivore;
+            }
         }
     }
 }
