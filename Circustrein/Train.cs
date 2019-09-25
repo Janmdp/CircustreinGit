@@ -27,7 +27,7 @@ namespace Circustrein
             animals.Add(animal);
             foreach (Wagon wagon in Wagons)
             {
-                if (wagon.checkWeight(animal) && wagon.checkCompatibility(animal))
+                if (wagon.addToWagon(animal))
                 {
                     wagon.addToWagon(animal);
                     added = true;

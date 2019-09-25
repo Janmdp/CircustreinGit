@@ -25,10 +25,16 @@ namespace Circustrein
         public List<Animal> AnimalsInWagon { get => animalsInWagon; set => animalsInWagon = value; }
 
         //methods
-        public void addToWagon(Animal animal)
+        public bool addToWagon(Animal animal)
         {
-            AnimalsInWagon.Add(animal);
-            Capacity = Capacity - animal.Weight;
+            if (checkCompatibility(animal) && checkWeight(animal))
+            {
+                AnimalsInWagon.Add(animal);
+                Capacity = Capacity - animal.Weight;
+                return true;
+            }
+
+            return false;
         }
 
         public bool checkWeight(Animal animal)
