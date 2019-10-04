@@ -52,7 +52,7 @@ namespace Circustrein
             }
         }
 
-        //Indicate wether an animal is a herbivore or carnivore
+        //Indicate whether an animal is a herbivore or carnivore
         private void CheckBoxCarnivore_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBoxCarnivore.Checked)

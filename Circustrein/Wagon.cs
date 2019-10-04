@@ -45,7 +45,7 @@ namespace Circustrein
         }
 
         //Checks if the weight of the animal is compatible with the leftover space in the wagon
-        public bool checkWeight(Animal animal)
+        private bool checkWeight(Animal animal)
         {
             //The animal fits and gets added to the wagon
             if (this.Capacity - animal.Weight >= 0)
@@ -60,7 +60,7 @@ namespace Circustrein
         }
 
         //Checks for conficts between herbivores and carnivores
-        public bool checkCompatibility(Animal animal)
+        private bool checkCompatibility(Animal animal)
         {
             //Check each animal in the wagon
             foreach (Animal animalToCheck in this.AnimalsInWagon)
