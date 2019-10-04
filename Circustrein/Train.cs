@@ -46,7 +46,7 @@ namespace Circustrein
         }
 
         //Generate a new wagon and add the animal to the wagon.
-        public void noWagonFound(Animal animal)
+        private void noWagonFound(Animal animal)
         {
             Wagon wagon = new Wagon(10, false);
             wagon.addToWagon(animal);

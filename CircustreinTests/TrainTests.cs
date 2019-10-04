@@ -6,14 +6,28 @@ namespace Circustrein.Tests
     [TestClass()]
     public class TrainTests
     {
-        [TestMethod()]
-        public void noWagonFoundAddTest()
+        [TestMethod]
+        public void NoWagonFoundTest()
         {
+            //No wagon was created which invokes the NoWagonFound which if executed correctly will add a new wagon to train.Wagons
+            //and will also add 
             Train train = new Train();
-            Animal animal = new Animal("test", 5, Type.typeAnimal.Carnivore);
-            train.noWagonFound(animal);
-            int count = train.Wagons.Count();
-            Assert.AreEqual(1, count);
+            Assert.IsFalse(train.AddAnimal("test", 5, Type.typeAnimal.Carnivore));
+            Assert.AreEqual(1, train.Wagons.Count);
+            Assert.AreEqual(1,train.Wagons[0].AnimalsInWagon.Count);
+        }
+
+        [TestMethod]
+        public void NoWagonFoundTest2()
+        {
+            //THe animal can't be added to a existing wagon which will invoke the NoWagonFound method which will generate a new wagon and add the animal to said wagon
+            //which means the train.wagons should contain 2 wagons.
+            Train train = new Train();
+            Wagon wagon = new Wagon(3, false);
+            train.Wagons.Add(wagon);
+            Assert.IsFalse(train.AddAnimal("test", 5, Type.typeAnimal.Carnivore));
+            Assert.AreEqual(2,train.Wagons.Count);
+            Assert.AreEqual(1, train.Wagons[1].AnimalsInWagon.Count);
         }
 
         [TestMethod()]
