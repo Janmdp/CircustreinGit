@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using static Circustrein.Weight;
 
 namespace Circustrein
 {
@@ -33,8 +34,9 @@ namespace Circustrein
         {
             try
             {
+                int toEnum = Convert.ToInt32(comboBoxSize.Text.Substring(0, 1));
                 //Create and add an animal to a wagon
-                if (train.AddAnimal(textBoxName.Text, Convert.ToInt32(comboBoxSize.Text.Substring(0, 1)), send))
+                if (train.AddAnimal(textBoxName.Text,(Size) toEnum, send))
                 {
                     updateInterfaces();
                 }

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using static Circustrein.Weight;
 
 namespace Circustrein
 {
@@ -21,7 +22,7 @@ namespace Circustrein
 
         //methods
         //Method for creating and adding a animal to a wagon
-        public bool AddAnimal(string name, int weight, Type.typeAnimal typeAnimal)
+        public bool AddAnimal(string name, Size weight, Type.typeAnimal typeAnimal)
         {
             //Create the animal
             Animal animal = new Animal(name, weight, typeAnimal);
@@ -30,7 +31,7 @@ namespace Circustrein
             //Loop through all the wagons and check if the animal can be added.
             foreach (Wagon wagon in Wagons)
             {
-                if (wagon.addToWagon(animal))
+                if (wagon.AddToWagon(animal))
                 {
                     return true;
                 }
@@ -38,7 +39,7 @@ namespace Circustrein
             //if the animal can't be added generate a new wagon
             if (!animal.Added)
             {
-                noWagonFound(animal);
+                NoWagonFound(animal);
                 return false;
             }
 
@@ -46,10 +47,10 @@ namespace Circustrein
         }
 
         //Generate a new wagon and add the animal to the wagon.
-        private void noWagonFound(Animal animal)
+        private void NoWagonFound(Animal animal)
         {
             Wagon wagon = new Wagon(10, false);
-            wagon.addToWagon(animal);
+            wagon.AddToWagon(animal);
             Wagons.Add(wagon);
         }
     }
